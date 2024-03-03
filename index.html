@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 </head>
 <!-- head section end -->
-<body>
+<body class="mulish-font">
   <!-- header section started -->
   <header>
     <!-- navbar section -->
@@ -68,8 +68,32 @@
       </div>
     </nav>
     <!-- banner section -->
-    <section>
-
+    <section class="mx-3 lg:mx-9 my-5 bg-[#12132D] rounded-3xl items-center">
+      <div class=" hero min-h-screen bg-no-repeat rounded-3xl" style="background-image: url(images/bgbanner.png);">
+        <div class="hero-content text-neutral-content">
+          <div class="flex flex-col lg:flex-row justify-between gap-10 p-2 lg:p-4">
+            <div class="space-y-3">
+              <h3 class="text-3xl font-extrabold">Welcome to the <br> <span class="text-blue-500">Tip</span> Forum</h3>
+              <p class="text-gray-400">Share your favorite opinion and win and wp forum coffee mug!</p>
+              <div class="join max-w-14 lg:max-w-full">
+                <input id="search-input" class="input input-bordered join-item rounded-full" placeholder="Search here anything"/>
+                <button id="search-btn" class="btn join-item bg-blue-500 text-white rounded-full border-white border-solid border-4 mx-auto">Search</button>
+              </div>
+            </div>
+            <div class="bg-white p-4 grid grid-cols-3 text-center text-gray-400 rounded-md items-center">
+                <div class="col-span-2 text-left">
+                  Registered Users <br>
+                  Forum <br>
+                  Topics <br>
+                  Replies
+                </div>
+                <div class="col-span-1">
+                  01 <br> 05 <br> 01 <br> 01
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </header>
   <!-- header section ended -->
