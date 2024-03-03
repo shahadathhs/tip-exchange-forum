@@ -46,6 +46,7 @@ const loadAllBlogs = async () => {
     `;
     div.appendChild(blogDiv);
   });
+  
   const btns = document.getElementsByClassName("read-btns");
   for (const btn of btns) {
     btn.addEventListener("click", function () {
@@ -69,3 +70,34 @@ const loadAllBlogs = async () => {
 }
 
 loadAllBlogs();
+
+const loadLatestPost = async () => {
+  const response = await fetch(" https://openapi.programming-hero.com/api/retro-forum/latest-posts");
+  const data = await response.json();
+
+  const div = document.getElementById("latest-div");
+  div.innerHTML = "";
+
+  data.forEach((blog) => {
+    console.log(blog)
+    const latestDiv = document.createElement("div");
+    latestDiv.innerHTML = `
+    <div  class="border-gray-200 border-2 p-3 rounded-xl space-y-4">
+      <div ><img src=${blog.cover_image} alt=""></div>
+      <p><i class="fa-regular fa-calendar"></i>${blog.author.posted_date}</p>
+      <h3 class="font-extrabold">${blog.title}</h3>
+      <p class="text-gray-400">${blog.description}</p>
+      <div class="flex justify-around gap-3">
+        <p><img class="w-1/2 h-1/2" src=${blog.profile_image} alt=""></p>
+        <div>
+          <p class="font-extrabold">${blog.author.name}</p>
+          <p id="designation" class="text-gray-400">${blog.author.designation}</p>
+        </div>
+      </div>
+    </div>
+    `;
+    div.appendChild(latestDiv);
+  })
+}
+
+loadLatestPost()
