@@ -118,24 +118,33 @@ const loadLatestPost = async () => {
   div.innerHTML = "";
 
   data.forEach((blog) => {
+
     const latestDiv = document.createElement("div");
+    
     latestDiv.innerHTML = `
     <div  class="border-gray-200 border-2 p-3 rounded-xl space-y-4">
       <div ><img src=${blog.cover_image} alt=""></div>
-      <p><i class="fa-regular fa-calendar"></i>${blog.author.posted_date}</p>
+      <p><i class="fa-regular fa-calendar"></i> ${blog.author.posted_date}</p>
       <h3 class="font-extrabold">${blog.title}</h3>
       <p class="text-gray-400">${blog.description}</p>
       <div class="flex justify-around gap-3">
         <p><img class="w-1/2 h-1/2" src=${blog.profile_image} alt=""></p>
         <div>
-          <p class="font-extrabold">${blog.author.name}</p>
-          <p id="designation" class="text-gray-400">${blog.author.designation}</p>
+          <p class="font-extrabold"> ${blog.author.name}</p>
+          <p id="designation" class="text-gray-400"> ${blog.author.designation}</p>
         </div>
       </div>
     </div>
     `;
+    
     div.appendChild(latestDiv);
   })
+
+  document.getElementById("latest-div").childNodes[1].childNodes[1].childNodes[9].childNodes[3].childNodes[3].innerText= "Unknown";
+
+  document.getElementById("latest-div").childNodes[2].childNodes[1].childNodes[3].innerHTML = `
+  <i class="fa-regular fa-calendar"></i> No Publish Date
+  `;
 }
 
-loadLatestPost()
+loadLatestPost();
