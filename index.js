@@ -2,13 +2,27 @@ const readNum = document.getElementById("read-blogs").innerText;
 let read = parseInt(readNum);
 
 const loadAllBlogs = async () => {
-  const response = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts");
+  const response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
   const data = await response.json();
-  
+  const blog = data.posts;
+
+  loadBlogs(blog);
+}
+
+const loadBlogsByCategory = async (category) => {
+  handleSpinner(true);
+  const response = await fetch(` https://openapi.programming-hero.com/api/retro-forum/posts?category=${category}`);
+  const data = await response.json();
+  const blog = data.posts;
+
+  loadBlogs(blog);
+}
+
+const loadBlogs = blog =>{
   const div = document.getElementById("blogs-div");
   div.innerHTML = "";
   
-  data.posts.forEach((blog) => {
+  blog.forEach((blog) => {
     const blogDiv = document.createElement("div");
     blogDiv.innerHTML = `
     <div class="flex flex-col lg:flex-row justify-around items-center gap-3 bg-[#797DFC1A] rounded-2xl p-5">
@@ -47,6 +61,8 @@ const loadAllBlogs = async () => {
     div.appendChild(blogDiv);
   });
   
+  handleSpinner(false);
+  
   const btns = document.getElementsByClassName("read-btns");
   for (const btn of btns) {
     btn.addEventListener("click", function () {
@@ -69,6 +85,29 @@ const loadAllBlogs = async () => {
   }
 }
 
+const handleSearch = () => {
+  const value = document.getElementById("search-box").value;
+  console.log(value);
+  if (value) {
+    loadBlogsByCategory(value);
+  } else {
+    alert("Please enter valid string ");
+  }
+};
+
+
+const handleSpinner = (isLoading) => {
+  const loadingSpinner = document.getElementById('loading-spiner');
+  if (isLoading) {
+      loadingSpinner.classList.remove('hidden')
+  }else{
+    setTimeout(() => {
+      loadingSpinner.classList.add('hidden')
+    }, 2000);  
+  }
+}
+
+
 loadAllBlogs();
 
 const loadLatestPost = async () => {
@@ -79,7 +118,6 @@ const loadLatestPost = async () => {
   div.innerHTML = "";
 
   data.forEach((blog) => {
-    console.log(blog)
     const latestDiv = document.createElement("div");
     latestDiv.innerHTML = `
     <div  class="border-gray-200 border-2 p-3 rounded-xl space-y-4">

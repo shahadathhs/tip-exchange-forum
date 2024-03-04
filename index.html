@@ -76,8 +76,8 @@
               <h3 class="text-3xl font-extrabold">Welcome to the <br> <span class="text-blue-500">Tip</span> Forum</h3>
               <p class="text-gray-400">Share your favorite opinion and win and wp forum coffee mug!</p>
               <div class="join max-w-14 lg:max-w-full">
-                <input id="search-input" class="input input-bordered join-item rounded-full" placeholder="Search here anything"/>
-                <button id="search-btn" class="btn join-item bg-blue-500 text-white rounded-full border-white border-solid border-4 mx-auto">Search</button>
+                <input id="search-box" class="input input-bordered join-item rounded-full" placeholder="Search here anything"/>
+                <button onclick="handleSearch()" id="search-btn" class="btn join-item bg-blue-500 text-white rounded-full border-white border-solid border-4 mx-auto">Search</button>
               </div>
             </div>
             <div class="bg-white p-4 grid grid-cols-3 text-center text-gray-400 rounded-md items-center">
@@ -104,7 +104,10 @@
       <div class="space-y-3 text-center">
         <h3 class="font-extrabold text-4xl">Let’s Discuss</h3>
         <p class="text-gray-400 max-w-96 mx-auto">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
-      </div> 
+      </div>
+      <div id="loading-spiner" class="loading-spiner hidden">
+        <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif" alt="">
+      </div>
       <div class="flex flex-col lg:flex-row gap-10 mt-4 justify-between flex-1">
         <div id="blogs-div" class="space-y-4 flex-1">
           
