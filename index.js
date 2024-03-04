@@ -62,7 +62,8 @@ const loadBlogs = blog =>{
     div.appendChild(blogDiv);
   });
 
-  console.log(document.getElementById("blogs-div").childNodes[1].childNodes[1].childNodes[1].innerHTML);
+  handleSpinner(false);
+
   document.getElementById("blogs-div").childNodes[1].childNodes[1].childNodes[1].innerHTML = `
     <div class="avatar offline">
       <div class="w-24 rounded-full">
@@ -71,7 +72,6 @@ const loadBlogs = blog =>{
     </div>
   `;
 
-  console.log(document.getElementById("blogs-div").childNodes[4].childNodes[1].childNodes[1].innerHTML);
   document.getElementById("blogs-div").childNodes[4].childNodes[1].childNodes[1].innerHTML = `
     <div class="avatar offline">
         <div class="w-24 rounded-full">
@@ -80,9 +80,6 @@ const loadBlogs = blog =>{
     </div>
   `;
 
-
-
-  handleSpinner(false);
   
   const btns = document.getElementsByClassName("read-btns");
   for (const btn of btns) {
