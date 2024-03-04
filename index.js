@@ -23,19 +23,20 @@ const loadBlogs = blog =>{
   div.innerHTML = "";
   
   blog.forEach((blog) => {
+
     const blogDiv = document.createElement("div");
     blogDiv.innerHTML = `
     <div class="flex flex-col lg:flex-row justify-around items-center gap-3 bg-[#797DFC1A] rounded-2xl p-5">
-        <div>
-          <div class="avatar online">
-            <div class="w-24 rounded-full">
-            <img src= ${blog.image} />
-          </div>
-          </div>
-          <div class="avatar offline hidden">
-            <div class="w-24 rounded-full">
-            <img src=${blog.image} />
-          </div>
+    <div>
+      <div class="avatar online">
+        <div class="w-24 rounded-full">
+        <img src= ${blog.image} />
+      </div>
+      </div>
+      <div class="avatar offline hidden">
+        <div class="w-24 rounded-full">
+        <img src=${blog.image} />
+      </div>
       </div>
       </div>
       <div class="space-y-2">
@@ -60,7 +61,27 @@ const loadBlogs = blog =>{
     `;
     div.appendChild(blogDiv);
   });
-  
+
+  console.log(document.getElementById("blogs-div").childNodes[1].childNodes[1].childNodes[1].innerHTML);
+  document.getElementById("blogs-div").childNodes[1].childNodes[1].childNodes[1].innerHTML = `
+    <div class="avatar offline">
+      <div class="w-24 rounded-full">
+        <img src="https://i.ibb.co/wYxp7d6/pexels-spencer-selover-428328.jpg">
+      </div>
+    </div>
+  `;
+
+  console.log(document.getElementById("blogs-div").childNodes[4].childNodes[1].childNodes[1].innerHTML);
+  document.getElementById("blogs-div").childNodes[4].childNodes[1].childNodes[1].innerHTML = `
+    <div class="avatar offline">
+        <div class="w-24 rounded-full">
+          <img src="https://i.ibb.co/b7GT5nt/pexels-apunto-group-agencia-de-publicidad-7752813.jpg">
+        </div>
+    </div>
+  `;
+
+
+
   handleSpinner(false);
   
   const btns = document.getElementsByClassName("read-btns");
